@@ -1,0 +1,296 @@
+/* common */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background: #eee;
+}
+
+ul li {
+  list-style: none;
+}
+
+.box {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 250px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px 0 #E0E2E5;
+}
+
+.box.active { display: block; }
+
+.box h2 {
+  padding: 10px 20px;
+  color: #fff;
+  background: #25bb9b;
+}
+
+input {
+  padding: 5px 10px;
+  width: 50px;
+  outline: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+button {
+  padding: 5px 15px;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  background: #25bb9b;
+  cursor: pointer;
+}
+button.unneed {
+  display: none!important;
+}
+
+button:hover {
+  box-shadow: 0 4px 8px 0 #E0E2E5;
+}
+
+.bgd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./get/bgd.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.bgd::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255,255,255,0.4);
+}
+
+/* 开始界面 */
+.start {
+  width: 30%;
+  text-align: center;
+}
+
+.start button {
+  display: block;
+  margin: 20px auto;
+  width: 70%;
+  min-width: 155px;
+  max-width: 200px;
+  height: 50px;
+}
+
+.start .info {
+  margin-bottom: 5px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.toInitial { background: #7B97EA; }
+.toDownLoad { background: #FFB063; }
+.toUpLoad { background: #34B2BE; }
+
+/* 题量范围界面 */
+.initial { width: 30%; }
+
+.initial div {
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.initial div.unneed { display: none; }
+
+.initial button {
+  display: block;
+  margin: 20px auto;
+  width: 70%;
+  min-width: 155px;
+  max-width: 200px;
+  height: 50px;
+}
+
+/* 做题界面 */
+.practice-ct { width: 40%; }
+.practice-ct .title {
+  padding: 20px 40px;
+  font-size: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.topic-wrap {
+  display: none!important;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.topic-wrap.active {
+  display: block!important;
+}
+
+.topic-wrap .num {
+  padding: 5px;
+  border-radius: 5px;
+  background: #e5e5e5;
+}
+
+.topic-wrap .answer {
+  display: none;
+  margin-left: 20px;
+  color: #ff6547;
+  font-size: 16px;
+}
+.topic-wrap .answer.active {
+  display: inline-block;
+}
+
+.topic-wrap .topic {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.content .btn-ct {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.btn-ct button { margin: 0 10px; }
+.btn-ct button:first-child {
+  background: #ff6547;
+}
+
+.btn-ct .info {
+  padding: 5px;
+  color: #ccc;
+  font-size: 12px;
+  text-align: right;
+}
+
+.sheet-ct {
+  margin: 0 5px;
+  padding: 10px;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.topic-list::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.topic-list li {
+  float: left;
+  margin-left: 20px;
+  padding: 5px 8px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.topic-list li.active {
+  color: #fff!important;
+  background: #6c7380!important;
+}
+
+.sheet { text-align: right; }
+.sheet:hover {
+  color: #25bb9b;
+  cursor: pointer;
+}
+
+/* 上传文件 */
+.upload { visibility: hidden; }
+
+/* 等待下载结果 */
+.downLoad {
+  width: 30%;
+}
+
+.downLoad .progress {
+  position: relative;
+  margin: 10px auto;
+  width: 10vw;
+  height: 10vw;
+  min-width: 4vw;
+  min-height: 4vw;
+}
+
+.downLoad .wrap {
+  position: absolute;
+  top: 0;
+  width: 5vw;
+  height: 10vw;
+  overflow: hidden;
+}
+.downLoad .right { right: 0; }
+.downLoad .left { left: 0; }
+
+.progress .circle {
+  position: absolute;
+  top: 5%;
+  width: 7vw;
+  height: 7vw;
+  min-width: 2vw;
+  min-height: 2vw;
+  border: 0.8vw solid transparent;
+  border-top: 0.8vw solid #34B2BE;
+  border-radius: 50%;
+  /* 旋转45度 */
+}
+
+.progress .rightCircle {
+  right: 15%;
+  border-right: 0.8vw solid #34B2BE;
+  -webkit-transform : rotate(-135deg);
+  -moz-transform : rotate(-135deg);
+  -o-transform : rotate(-135deg);
+  transform : rotate(-135deg);
+}
+
+
+.progress .leftCircle {
+  left: 15%;
+  border-left: 0.8vw solid #34B2BE;
+  -webkit-transform : rotate(135deg);
+  -moz-transform : rotate(135deg);
+  -o-transform : rotate(135deg);
+  transform : rotate(135deg); 
+}
+
+.downLoad .rate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5vw;
+}
+
+.downLoad .getResult {
+  display: block;
+  margin: 10px auto;
+  background: #6c7380;
+  cursor: wait;
+}
+
+.downLoad .getResult.ready {
+  background: #25bb9b;
+  cursor: pointer;
+}
